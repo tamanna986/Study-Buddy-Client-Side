@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (
-<footer className="footer p-10 bg-sky-900 text-neutral-content text-white">
+<footer className="footer p-4 pl-5 md:p-10  bg-sky-900 text-neutral-content text-white">
 <form>
     <header className="footer-title">Newsletter</header> 
     <fieldset className="form-control w-80">
