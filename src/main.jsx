@@ -11,6 +11,8 @@ import Home from './pages/Home/Home.jsx';
 import LogIn from './pages/LogIn/LogIn.jsx';
 import Register from './pages/Register/Register.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
+import CreateAssignments from './pages/CreateAssignments/CreateAssignments.jsx';
+import PrivateRoute from './Route/privateRoute.jsx';
 
 
 
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
       {
         path:'/',
         element: <Home></Home>
+      },
+      {
+        path:'/createassignments',
+        element: <PrivateRoute><CreateAssignments></CreateAssignments></PrivateRoute>
       },
       {
         path:'/login',

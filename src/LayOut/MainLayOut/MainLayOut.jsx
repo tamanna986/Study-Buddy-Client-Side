@@ -12,9 +12,10 @@ const MainLayOut = ({children}) => {
     const navItems = <>
     <li><Link to="/">Home</Link> </li>
     
+    
    
     { user?.email ?  <>
-      
+        <li><Link to="/createassignments">Create Assignment</Link> </li>
         <li><button onClick={handleSignOut}>Log out</button></li>
         
     </> 

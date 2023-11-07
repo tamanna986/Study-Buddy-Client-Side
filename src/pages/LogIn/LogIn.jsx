@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
+import axios from "axios";
 
 
 const LogIn = () => {
@@ -10,6 +11,7 @@ const LogIn = () => {
     const { signIn , signInWithGoogle , user } = useContext(AuthContext)
     const location = useLocation();
     const navigate = useNavigate();
+    
 
 
     const handleLoginSubmit = (e) => {
@@ -35,6 +37,15 @@ const LogIn = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user)
+
+                const user = { email };
+                axios.post('http://localhost:5000/jwt',user, {withCredentials: true})
+                .then(res =>{
+                    console.log(res.data)
+                    if (res.data.success) {
+                        navigate(location?.state ? location?.state : '/')
+                    }
+                })
 
                 Swal.fire({
                     position: 'top-end',
@@ -62,7 +73,35 @@ const LogIn = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
+                const userEmail = result.user?.email 
+                const loggedUser = {email: userEmail};
                 console.log(result.user)
+                console.log("loggedUser",loggedUser)
+                if(result.user)
+                {
+                    axios.post('http://localhost:5000/jwt',loggedUser, {withCredentials: true})
+                    .then(res =>{
+                        console.log(res.data)
+                        if (res.data.success) {
+                            navigate(location?.state ? location?.state : '/')
+                        }
+                    })
+                }
+                else{
+                    axios.post('http://localhost:5000/logout', loggedUser, {useCredentials:true})
+              .then(res => console.log('after log out', res.data))
+                }
+
+
+                
+                // axios.post('http://localhost:5000/jwt',userEmail, {withCredentials: true})
+                // .then(res =>{
+                //     console.log(res.data)
+                //     if (res.data.success) {
+                //         navigate(location?.state ? location?.state : '/')
+                //     }
+                // })
+
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -70,8 +109,8 @@ const LogIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                   })
-                     // to go to desired page using navigate
-                navigate(location?.state ? location.state : '/');
+                //      // to go to desired page using navigate
+                // navigate(location?.state ? location.state : '/');
 
 
             })
