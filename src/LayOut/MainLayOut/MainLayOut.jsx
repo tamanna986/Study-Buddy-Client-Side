@@ -1,20 +1,29 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 
 const MainLayOut = ({children}) => {
+  const { user, logOut } = useContext(AuthContext)
+  const handleSignOut = () => {
+    logOut();
+  }
 
     const navItems = <>
     <li><Link to="/">Home</Link> </li>
-    <li> <Link to="/about">About</Link> </li>
-    <li> <Link to="/login">Log In</Link> </li>
-    <li> <Link to="/register">Register</Link> </li>
+    
    
-    {/* { user?.email ?  <>
-        <li><Link to="/bookings">My Bookings</Link></li>
-        <li><button onClick={handleLogOut}>Log out</button></li>
+    { user?.email ?  <>
+      
+        <li><button onClick={handleSignOut}>Log out</button></li>
+        
     </> 
-    : <li> <Link to="/login">Login</Link> </li>
-   } */}
+    : 
+    <>
+      <li> <Link to="/login">Login</Link> </li>
+      <li> <Link to="/register">Register</Link> </li>
+    </>
+   }
    
 </>
 
@@ -38,6 +47,10 @@ const MainLayOut = ({children}) => {
         <ul className="menu menu-horizontal text-white">
           {/* Navbar menu content here */}
           {navItems}
+          {
+            user && <img className="w-10 rounded-full mx-1 lg:mx-2" src={user.photoURL} alt={user.displayName}
+            title={user.displayName} />
+          }
         </ul>
       </div>
     </div>
@@ -49,6 +62,11 @@ const MainLayOut = ({children}) => {
     <ul className="menu p-4 w-80 min-h-full bg-sky-800 text-white">
       {/* Sidebar content here */}
       {navItems}
+      {
+            user && <img className="w-10 rounded-full mx-1 lg:mx-2" src={user.photoURL} alt={user.displayName}
+            title={user.displayName} />
+          }
+      
     </ul>
   </div>
 </div>
