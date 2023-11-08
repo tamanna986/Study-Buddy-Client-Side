@@ -13,6 +13,7 @@ import Register from './pages/Register/Register.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import CreateAssignments from './pages/CreateAssignments/CreateAssignments.jsx';
 import PrivateRoute from './Route/privateRoute.jsx';
+import AllAssignments from './pages/AllAssignments/AllAssignments.jsx';
 
 
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element: <Register></Register>
+      },
+      {
+        path:'/allAssignments',
+        element: <AllAssignments></AllAssignments>
       }
     ]
   },

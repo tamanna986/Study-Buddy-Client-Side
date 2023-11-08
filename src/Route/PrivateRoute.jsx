@@ -12,7 +12,7 @@ const PrivateRoute = ({children}) => {
     // console.log(location.pathname);
 
     if(loading) {
-        return <progress className="progress w-56 mx-auto my-auto"></progress>
+        return <progress className="progress w-56 mx-auto my-20"></progress>
     }
 
     if(user?.email){

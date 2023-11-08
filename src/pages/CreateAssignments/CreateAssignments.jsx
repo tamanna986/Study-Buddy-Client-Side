@@ -29,6 +29,18 @@ const CreateAssignments = () => {
         const newAssignment = { photo, title, description,marks, category, dueDate: dueDate , email};
         console.log(newAssignment)
 
+// validating if the fields are field or not before sending data
+        if (!photo || !title || !description || !marks || !category) {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please fill out all fields',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            });
+            return;
+        }
+
+
 
         fetch('http://localhost:5000/assignments' , {
             method: 'POST',
@@ -132,7 +144,7 @@ const CreateAssignments = () => {
                         </div>
                         <div className="flex  items-center gap-3">
                     <label className="label">
-                        <span className="label-text t text-lg py-3 px-12 bg-yellow-100  text-sky-700 font-semibold rounded-lg">
+                        <span className="label-text t text-lg py-3 px-11 bg-yellow-100  text-sky-700 font-semibold rounded-lg">
                             Due Date
                         </span>
                     </label>

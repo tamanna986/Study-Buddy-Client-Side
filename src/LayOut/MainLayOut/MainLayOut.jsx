@@ -11,6 +11,8 @@ const MainLayOut = ({children}) => {
 
     const navItems = <>
     <li><Link to="/">Home</Link> </li>
+    <li><Link to="/allAssignments">All Assignments</Link></li>
+    
     
     
    
