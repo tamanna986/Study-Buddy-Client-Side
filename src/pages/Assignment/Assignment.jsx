@@ -8,9 +8,9 @@ import { AuthContext } from "../../Providers/AuthProvider";
 const Assignment = ({ assignment, updatedAssignments, setUpdatedAssignments }) => {
   const { _id } = assignment;
   const { user } = useContext(AuthContext)
-  console.log(user.email);
+  // console.log(user.email);
   const [email, setEmail] = useState('')
-  console.log(email.email)
+  // console.log(email.email)
 
   useEffect(() => {
     fetch(`http://localhost:5000/allAssignments/${_id}`)
@@ -66,30 +66,7 @@ const Assignment = ({ assignment, updatedAssignments, setUpdatedAssignments }) =
   
           }
 
-          // fetch(`http://localhost:5000/allAssignments/${_id}`, {
-          //   method: 'DELETE'
-          // })
-          //   .then(res => res.json())
-          //   .then(data => {
-          //     console.log(data);
-
-
-          //     if (data.deletedCount > 0) {
-          //       Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-
-
-
-          //       // to show remaining product on ui  after deleting
-          //       const remaining = updatedAssignments.filter(updatedAssignment => updatedAssignment._id !== _id)
-          //       setUpdatedAssignments(remaining);
-
-          //     }
-          //   })
-          //   .catch(error => {
-          //     console.error('Error:', error);
-          //   });
-
-
+          
 
         }
       })

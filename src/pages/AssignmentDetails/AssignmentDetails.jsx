@@ -13,7 +13,13 @@ const AssignmentDetails = () => {
     const formRef = useRef(null);
     const {user} = useContext(AuthContext)
     const userEmail = user.email
-    // console.log(details)
+    const examineeName = user.displayName
+    const title = details.title
+    const marks = details.marks
+
+
+    console.log(examineeName)
+    console.log(details)
 
     useEffect(() => {
         fetch(`http://localhost:5000/allAssignments/${id}`)
@@ -29,7 +35,7 @@ const AssignmentDetails = () => {
        const  note = e.target.note.value
         console.log("PDF Link:", pdfLink);
         console.log("Note:", note);
-        const newSubmittedAssignment = {pdfLink, note , userEmail}
+        const newSubmittedAssignment = {pdfLink, note , userEmail ,  examineeName , title, marks}
         
 
 
@@ -103,10 +109,9 @@ const AssignmentDetails = () => {
                     </label>
                     <input
                         type="text"
-                        // value={pdfLink}
-                        // onChange={handlePdfLinkChange}
+                        
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        // id="pdfLink"
+                        
                         placeholder="Enter PDF link here"
                         name = "pdf"
                     />

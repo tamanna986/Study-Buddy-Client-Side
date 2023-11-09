@@ -18,6 +18,7 @@ const MainLayOut = ({children}) => {
    
     { user?.email ?  <>
         <li><Link to="/createassignments">Create Assignment</Link> </li>
+        <li><Link to="/allSubmittedAssignments">Submitted Assignment</Link> </li>
         <li><button onClick={handleSignOut}>Log out</button></li>
         
     </> 
