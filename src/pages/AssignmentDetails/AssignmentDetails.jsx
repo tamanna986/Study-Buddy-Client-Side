@@ -59,7 +59,13 @@ const AssignmentDetails = () => {
                 confirmButtonText: 'Close'
               })
         }
-        formRef.current.reset(); 
+        if (formRef.current) {
+            formRef.current.reset();
+          }
+          const dialog = document.getElementById('my_modal_5');
+          if (dialog) {
+            dialog.close();
+          }
     })
 
 

@@ -1,15 +1,27 @@
 import { useEffect, useState } from "react";
 import SubmittedAssignment from "../SubmittedAssignment/SubmittedAssignment";
+import Swal from "sweetalert2";
 
 
 const AllSubmittedAssignments = () => {
-    const [submittedAssignments, setSubmittedAssignments] = useState([])
+    const [submittedAssignmentsBeforeMarkings, setSubmittedAssignmentsBeforeMarkings] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:5000/allSubmittedAssignments')
             .then(res => res.json())
-            .then(data => setSubmittedAssignments(data))
+            .then(data =>{
+                console.log(data);
+                setSubmittedAssignmentsBeforeMarkings(data)
+            } )
     }, [])
+
+
+ 
+//     // Filter out the submitted assignments with a 'Completed' status
+//    const pendingSubmittedAssignments = submittedAssignmentsBeforeMarkings.filter(submittedAssignmentsBeforeMarking => submittedAssignmentsBeforeMarking.status !== 'Completed');
+//    console.log(pendingSubmittedAssignments)
+
+    
     return (
         <div className="mx-auto container py-20">
             <h1 className="text-sky-900 font-bold text-xl md:text-3xl mb-10">Submitted Assignments</h1>
@@ -28,7 +40,7 @@ const AllSubmittedAssignments = () => {
                 </thead>
                       <tbody>
                       {
-                    submittedAssignments.map(submittedAssignment => <SubmittedAssignment
+                    submittedAssignmentsBeforeMarkings.map(submittedAssignment => <SubmittedAssignment
                         key={submittedAssignment._id}
                         submittedAssignment={submittedAssignment}
                     >
