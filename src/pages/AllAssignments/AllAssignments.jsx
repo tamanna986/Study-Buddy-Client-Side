@@ -6,6 +6,7 @@ import Assignment from "../Assignment/Assignment";
 const AllAssignments = () => {
     const [assignments, setAssignments] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("");
+    const[updatedAssignments, setUpdatedAssignments] = useState([]);
     
     // console.log(assignments)
     
@@ -18,15 +19,19 @@ const AllAssignments = () => {
        
         fetch('http://localhost:5000/allAssignments')
         .then(res => res.json())
-        .then(data => setAssignments(data))
+        .then(data => setUpdatedAssignments(data))
+        // .then(data => setAssignments(data))
         
         
     },[])
 
 
+    // const filteredAssignments = selectedCategory
+    //     ? assignments.filter(assignment => assignment.category === selectedCategory)
+    //     : assignments;
     const filteredAssignments = selectedCategory
-        ? assignments.filter(assignment => assignment.category === selectedCategory)
-        : assignments;
+        ? updatedAssignments.filter(updatedAssignment => updatedAssignment.category === selectedCategory)
+        :  updatedAssignments;
 
 
     return (
@@ -52,6 +57,8 @@ const AllAssignments = () => {
                 filteredAssignments.map(assignment => <Assignment
                 key = {assignment._id}
                 assignment = {assignment}
+                updatedAssignments={updatedAssignments}
+                setUpdatedAssignments={setUpdatedAssignments}
                 
                 ></Assignment>)
             }
