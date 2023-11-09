@@ -14,6 +14,8 @@ import AuthProvider from './Providers/AuthProvider.jsx';
 import CreateAssignments from './pages/CreateAssignments/CreateAssignments.jsx';
 import PrivateRoute from './Route/privateRoute.jsx';
 import AllAssignments from './pages/AllAssignments/AllAssignments.jsx';
+import AssignmentDetails from './pages/AssignmentDetails/AssignmentDetails.jsx';
+import UpdateAssignments from './pages/UpdateAssignments/UpdateAssignments.jsx';
 
 
 
@@ -41,6 +43,15 @@ const router = createBrowserRouter([
       {
         path:'/allAssignments',
         element: <AllAssignments></AllAssignments>
+      },
+      {
+        path:'/allAssignments/:id',
+        element: <PrivateRoute><AssignmentDetails></AssignmentDetails></PrivateRoute>
+      },
+      {
+        path:'/update/:id',
+        element: <PrivateRoute><UpdateAssignments></UpdateAssignments></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`)
       }
     ]
   },

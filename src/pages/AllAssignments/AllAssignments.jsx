@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import Assignment from "../Assignment/Assignment";
 
 
+
 const AllAssignments = () => {
     const [assignments, setAssignments] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("");
+    
     // console.log(assignments)
     
     const handleCategoryChange = (e) => {
