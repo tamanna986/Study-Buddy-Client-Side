@@ -1,8 +1,6 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Feature: Study Buddy
+ . here users can log in using password email based and googled based authentication
+. there are all assignment page where all the assignment created by user will be shown
+. there are view detail option by clicking which user can see the details of assignment, and after logging he can view the details and rtake the assignment
+. Logged in user only who created the assignment can update the assignment
+. anyone can give mark teh assignments from all submitted assignment page.
