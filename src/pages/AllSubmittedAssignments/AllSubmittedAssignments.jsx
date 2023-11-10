@@ -13,12 +13,12 @@ const AllSubmittedAssignments = () => {
                 console.log(data);
                 setSubmittedAssignmentsBeforeMarkings(data)
             } )
-    }, [])
+    }, [submittedAssignmentsBeforeMarkings])
 
 
  
     // Filter out the submitted assignments with a 'Completed' status
-   const pendingSubmittedAssignments = submittedAssignmentsBeforeMarkings.filter(submittedAssignmentsBeforeMarking => submittedAssignmentsBeforeMarking.status !== 'Completed');
+   const pendingSubmittedAssignments = submittedAssignmentsBeforeMarkings.filter(submittedAssignmentsBeforeMarking => submittedAssignmentsBeforeMarking.status === 'pending');
    console.log(pendingSubmittedAssignments)
 
     
