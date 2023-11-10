@@ -16,6 +16,9 @@ const AssignmentDetails = () => {
     const examineeName = user.displayName
     const title = details.title
     const marks = details.marks
+    const obtainedMarks = null
+    const feedback = "No feedBack yet"
+    const status = "pending"
 
 
     console.log(examineeName)
@@ -35,7 +38,7 @@ const AssignmentDetails = () => {
        const  note = e.target.note.value
         console.log("PDF Link:", pdfLink);
         console.log("Note:", note);
-        const newSubmittedAssignment = {pdfLink, note , userEmail ,  examineeName , title, marks}
+        const newSubmittedAssignment = {pdfLink, note , userEmail ,  examineeName , title, marks , obtainedMarks, feedback,status}
         
 
 

@@ -12,11 +12,11 @@ const SubmittedAssignment = ({ submittedAssignment}) => {
     const title = submittedAssignment.title
     const AssignmentMark = submittedAssignment.marks
     const id = submittedAssignment._id
-    console.log(submittedAssignment)
+    // console.log(submittedAssignment)
 
     const handleClose = (e) => {
         e.preventDefault();
-        document.getElementById('id').close();
+        document.getElementById(id).close();
     };
 
 
@@ -63,7 +63,7 @@ const handleSubmit = (e) => {
     const marks = e.target.elements.marks.value;
     const feedback = e.target.elements.feedback.value;
 
-    const newSubmittedMark = { marks, feedback, userEmail, examineeName, title, AssignmentMark,
+    const newSubmittedMark = { marks, feedback, userEmail,examineeName,title, AssignmentMark,
         status: 'Completed'
     };
 
@@ -91,7 +91,7 @@ const handleSubmit = (e) => {
         if (formRef.current) {
           formRef.current.reset();
         }
-        const dialog = document.getElementById('id');
+        const dialog = document.getElementById(id);
         if (dialog) {
           dialog.close();
         }
@@ -114,8 +114,8 @@ const handleSubmit = (e) => {
         <td>{submittedAssignment.marks}</td>
         <td>{submittedAssignment.examineeName}</td>
         <td><button>Pending</button></td>
-        <td><button className="btn btn-outline btn-warning" onClick={() => document.getElementById('id').showModal()}>Give Mark</button>
-        <dialog id="id" className="modal modal-bottom sm:modal-middle">
+        <td><button className="btn btn-outline btn-warning" onClick={() => document.getElementById(id).showModal()}>Give Mark</button>
+        <dialog id={id} className="modal modal-bottom sm:modal-middle">
                             <div className="modal-box">
                                 <h3 className="text-2xl text-center font-bold mt-8 text-sky-800">Assignment Submission</h3>
                                 <div className="my-10 mx-auto text-sky-800 font-semibold space-y-4">

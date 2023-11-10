@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SubmittedAssignment from "../SubmittedAssignment/SubmittedAssignment";
-import Swal from "sweetalert2";
+
 
 
 const AllSubmittedAssignments = () => {
@@ -17,9 +17,9 @@ const AllSubmittedAssignments = () => {
 
 
  
-//     // Filter out the submitted assignments with a 'Completed' status
-//    const pendingSubmittedAssignments = submittedAssignmentsBeforeMarkings.filter(submittedAssignmentsBeforeMarking => submittedAssignmentsBeforeMarking.status !== 'Completed');
-//    console.log(pendingSubmittedAssignments)
+    // Filter out the submitted assignments with a 'Completed' status
+   const pendingSubmittedAssignments = submittedAssignmentsBeforeMarkings.filter(submittedAssignmentsBeforeMarking => submittedAssignmentsBeforeMarking.status !== 'Completed');
+   console.log(pendingSubmittedAssignments)
 
     
     return (
@@ -40,7 +40,7 @@ const AllSubmittedAssignments = () => {
                 </thead>
                       <tbody>
                       {
-                    submittedAssignmentsBeforeMarkings.map(submittedAssignment => <SubmittedAssignment
+                    pendingSubmittedAssignments.map(submittedAssignment => <SubmittedAssignment
                         key={submittedAssignment._id}
                         submittedAssignment={submittedAssignment}
                     >

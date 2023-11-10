@@ -18,6 +18,7 @@ import AssignmentDetails from './pages/AssignmentDetails/AssignmentDetails.jsx';
 import UpdateAssignments from './pages/UpdateAssignments/UpdateAssignments.jsx';
 import AllSubmittedAssignments from './pages/AllSubmittedAssignments/AllSubmittedAssignments.jsx';
 import MyAssignments from './pages/MyAssignments/MyAssignments.jsx';
+import ErrorPage from './pages/ErrorPage/ErrorPage.jsx';
 
 
 
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children:[
       {
         path:'/',
