@@ -65,7 +65,7 @@ const AssignmentDetails = () => {
         if (formRef.current) {
             formRef.current.reset();
           }
-          const dialog = document.getElementById('my_modal_5');
+          const dialog = document.getElementById(id);
           if (dialog) {
             dialog.close();
           }
@@ -78,7 +78,7 @@ const AssignmentDetails = () => {
 
     const handleClose = (e) => {
         e.preventDefault();
-        document.getElementById('my_modal_5').close();
+        document.getElementById(id).close();
     };
 
     
@@ -105,8 +105,8 @@ const AssignmentDetails = () => {
                             <h4 className="text-lg font-semibold text-green-800">Level : {details.category}</h4> </div>
                         {/* <button className="btn btn-warning text-white" >Take Assignment</button> */}
 
-                        <button className="btn btn-warning text-white" onClick={() => document.getElementById('my_modal_5').showModal()}>Take Assignment</button>
-                        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+                        <button className="btn btn-warning text-white" onClick={() => document.getElementById(id).showModal()}>Take Assignment</button>
+                        <dialog id={id }className="modal modal-bottom sm:modal-middle">
                             <div className="modal-box">
                                 <h3 className="text-2xl text-center font-bold mt-8 text-sky-800">Assignment Submission</h3>
                                 <p className="py-4">Press ESC key or click the button below to close</p>

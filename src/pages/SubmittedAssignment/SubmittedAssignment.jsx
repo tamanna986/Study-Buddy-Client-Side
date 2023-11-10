@@ -60,24 +60,43 @@ const SubmittedAssignment = ({ submittedAssignment}) => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    const marks = e.target.elements.marks.value;
+    const obtainedMarks = e.target.elements.obtainedMarks.value;
     const feedback = e.target.elements.feedback.value;
+    const status = e.target.elements.status.value;
 
-    const newSubmittedMark = { marks, feedback, userEmail,examineeName,title, AssignmentMark,
-        status: 'Completed'
+    // const newSubmittedMark = { marks, feedback, userEmail,examineeName,title, AssignmentMark,
+    //     status: 'Completed'
+    // };
+    const newSubmittedMark = {obtainedMarks, feedback, userEmail,examineeName,title, AssignmentMark,
+        status
     };
 
     console.log('submit button clicked', newSubmittedMark);
 
     // for posting marks and feedback to database
-    fetch('http://localhost:5000/marks', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newSubmittedMark),
-    })
-      .then(res => res.json())
+    // fetch('http://localhost:5000/marks', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(newSubmittedMark),
+    // })
+      
+    
+
+         // send data to the server
+
+         fetch(`http://localhost:5000/updateMark/${id}` , {
+            method: 'PUT',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newSubmittedMark)
+        })
+        
+    
+
+    .then(res => res.json())
       .then(data => {
         console.log(data);
         if (data.insertedId) {
@@ -129,12 +148,12 @@ const handleSubmit = (e) => {
                         Mark Submission
                     </label>
                     <input
-                        type="text"
+                        type="number"
                         
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         
                         placeholder="Enter Marks here"
-                        name = "marks"
+                        name = "obtainedMarks"
                     />
                 </div>
                 <div className="mb-6">
@@ -152,6 +171,20 @@ const handleSubmit = (e) => {
                         rows="4"
                     />
                 </div>
+                <div className="flex justify-center items-center mb-4">
+                        <label className="label">
+                            <span className="label-text font-bold text-sky-900 mr-3  ">Status </span>
+                        </label>
+
+                        <select name="status" 
+                        defaultValue={submittedAssignment.status }
+                         className="select select-bordered w-full ">
+                    
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+
+                        </select>
+                    </div>
                 <div className="flex items-center justify-between">
                     <button
                         type="submit"

@@ -10,7 +10,7 @@ const MyAssignments = () => {
     console.log(myAssignments)
     
 
-    const url = 'http://localhost:5000/myAssignment';
+    const url = 'http://localhost:5000/allSubmittedAssignments';
     useEffect(() => {
 
         fetch(url)
@@ -25,19 +25,15 @@ const MyAssignments = () => {
 
 
     return (
-        <div className="my-20">
-            <h1 className="text-sky-900 font-bold mb-10">My Assignment</h1>
+        <div className="my-20 mx-auto container">
+            <h1 className="text-sky-900 font-bold mb-10  text-xl md:text-3xl">My Assignment</h1>
             <div className="overflow-x-auto w-full">
         <table className="table w-full">
             {/* head */}
             <thead>
-                <tr>
-                    <th>
-                        <label>
-                            <input type="checkbox" className="checkbox" />
-                        </label>
-                    </th>
-                    <th>Image</th>
+                <tr className="text-lg font-bold text-sky-700">
+                    
+                    
                     <th>Title</th>
                     <th>Status</th>
                     <th>Total Mark</th>
