@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import MyAssignment from "../MyAssignment/MyAssignment";
+import axios from "axios";
 
 
 
@@ -10,17 +11,33 @@ const MyAssignments = () => {
     console.log(myAssignments)
     
 
-    const url = 'http://localhost:5000/allSubmittedAssignments';
-    useEffect(() => {
+    // const url = 'http://localhost:5000/allSubmittedAssignments';
+    // useEffect(() => {
 
-        fetch(url)
-        .then(res => res.json())
-        .then(data => setMyAssignments(data))
+    //     fetch(url)
+    //     .then(res => res.json())
+    //     .then(data => setMyAssignments(data))
         
   
-    //    axios.get(url, {withCredentials: true})
+    // //    axios.get(url, {withCredentials: true})
             
-    //         .then(res => setMyAssignments(res.data))
+    // //         .then(res => setMyAssignments(res.data))
+    // }, [url]);
+
+console.log(user.email)
+    
+    
+    const url =  'http://localhost:5000/myAssignments?userEmail=t@gmail.com '
+    useEffect(() => {
+
+  
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then(data => setBookings(data))
+  
+        axios.get(url, {withCredentials: true})
+            
+            .then(res => setMyAssignments(res.data))
     }, [url]);
 
 
