@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SubmittedAssignment from "../SubmittedAssignment/SubmittedAssignment";
+import axios from "axios";
 
 
 
@@ -7,12 +8,16 @@ const AllSubmittedAssignments = () => {
     const [submittedAssignmentsBeforeMarkings, setSubmittedAssignmentsBeforeMarkings] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/allSubmittedAssignments')
-            .then(res => res.json())
-            .then(data =>{
-                console.log(data);
-                setSubmittedAssignmentsBeforeMarkings(data)
-            } )
+        // fetch('http://localhost:5000/allSubmittedAssignments')
+        //     .then(res => res.json())
+        //     .then(data =>{
+        //         console.log(data);
+        //         setSubmittedAssignmentsBeforeMarkings(data)
+        //     } )
+
+            axios.get('http://localhost:5000/allSubmittedAssignments', {withCredentials: true})
+            
+            .then(res => setSubmittedAssignmentsBeforeMarkings(res.data))
     }, [submittedAssignmentsBeforeMarkings])
 
 

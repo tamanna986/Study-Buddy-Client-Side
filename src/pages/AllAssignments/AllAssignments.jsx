@@ -1,29 +1,74 @@
 import { useEffect, useState } from "react";
 import Assignment from "../Assignment/Assignment";
+import { useLoaderData } from "react-router-dom";
 
 
 
 const AllAssignments = () => {
+
+    const {count} = useLoaderData();
+    console.log(count)
+    const[featuredAssignments,setFeaturedAssignments] = useState([])
     const [assignments, setAssignments] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState("");
     const[updatedAssignments, setUpdatedAssignments] = useState([]);
+    const [itemsPerPage, setItemsPerPage] = useState(6);
+    const [currentPage, setCurrentPage] = useState(0);
     
-    // console.log(assignments)
+    console.log("updatedAssignments", updatedAssignments)
     
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value);
     };
     
+        
+    // for pagination
+    // const itemsPerPage = 6;
+    const noOfPages = Math.ceil(count/itemsPerPage);
+    console.log(noOfPages)
 
-    useEffect(() =>{
+// instead of for loop
+    const pages = [...Array(noOfPages).keys()];
+    console.log("pages", pages)
+
+    const handleItemsPerPage = (e)=>{
+        const val = parseInt(e.target.value);
+        setItemsPerPage(val);
+        setCurrentPage(0);
+    }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/allAssignments?page=${currentPage}&size=${itemsPerPage}`)
+            .then(res => res.json())
+            .then(data => setUpdatedAssignments(data))
+    }, [currentPage, itemsPerPage]);
+
+
+    // useEffect(() =>{
        
-        fetch('http://localhost:5000/allAssignments')
-        .then(res => res.json())
-        .then(data => setUpdatedAssignments(data))
-        // .then(data => setAssignments(data))
+    //     fetch('http://localhost:5000/allAssignments')
+    //     .then(res => res.json())
+    //     .then(data => setUpdatedAssignments(data))
+    //     // .then(data => setAssignments(data))
         
         
-    },[])
+    // },[])
+
+
+        // to handle prev and next buttons
+
+const handlePrev = () =>{
+    if(currentPage > 0){
+      setCurrentPage(currentPage-1);
+    }
+  
+  }
+  
+  const handleNext = () =>{
+      if(currentPage < pages.length ){
+          setCurrentPage(currentPage + 1)
+      }
+  }
 
 
     // const filteredAssignments = selectedCategory
@@ -32,6 +77,8 @@ const AllAssignments = () => {
     const filteredAssignments = selectedCategory
         ? updatedAssignments.filter(updatedAssignment => updatedAssignment.category === selectedCategory)
         :  updatedAssignments;
+
+        
 
 
     return (
@@ -63,6 +110,30 @@ const AllAssignments = () => {
                 ></Assignment>)
             }
             </div>
+
+
+            {/* for pagination */}
+            <div className="mb-20">
+                <h1>currentPage: </h1>
+                <button  onClick={handlePrev} className="mx-1 px-2 bg-yellow-950 text-white">prev</button>
+                {
+                    pages.map(page => <button  onClick={() => setCurrentPage(page)} className="text-white px-2 mx-1 bg-sky-700"
+                    key = {page.index}
+                    >{page}</button>)
+                }
+                <button  onClick={handleNext}  className="mx-1 px-2 bg-yellow-950 text-white">next</button>
+
+                <select value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+                    <option value="6">6</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">30</option>
+                </select>
+
+                
+            </div>
+
+
         </div>
     );
 };
