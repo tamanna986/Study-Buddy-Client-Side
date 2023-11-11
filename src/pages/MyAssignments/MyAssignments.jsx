@@ -27,18 +27,19 @@ const MyAssignments = () => {
 console.log(user.email)
     
     
-    const url =  'http://localhost:5000/myAssignments?userEmail=t@gmail.com '
-    useEffect(() => {
+    // const url =  'http://localhost:5000/myAssignments?userEmail=j@gmail.com'
 
+    useEffect(() => {
+        const url = ` http://localhost:5000/myAssignments?userEmail=${user?.email}`
   
         // fetch(url)
         //     .then(res => res.json())
-        //     .then(data => setBookings(data))
+        //     .then(data => setMyAssignments(data))
   
         axios.get(url, {withCredentials: true})
             
             .then(res => setMyAssignments(res.data))
-    }, [url]);
+    }, [user]);
 
 
     return (
