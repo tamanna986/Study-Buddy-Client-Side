@@ -42,7 +42,7 @@ const CreateAssignments = () => {
 
 
 
-        fetch('http://localhost:5000/assignments' , {
+        fetch('https://study-buddy-server-ruby.vercel.app/assignments' , {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

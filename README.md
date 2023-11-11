@@ -9,3 +9,4 @@
 
 **Live Site Link**
 
+https://study-buddy-ce97a.web.app/

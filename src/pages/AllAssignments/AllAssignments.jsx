@@ -38,7 +38,7 @@ const AllAssignments = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allAssignments?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`https://study-buddy-server-ruby.vercel.app/allAssignments?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setUpdatedAssignments(data))
     }, [currentPage, itemsPerPage]);
@@ -46,7 +46,7 @@ const AllAssignments = () => {
 
     // useEffect(() =>{
        
-    //     fetch('http://localhost:5000/allAssignments')
+    //     fetch('https://study-buddy-server-ruby.vercel.app/allAssignments')
     //     .then(res => res.json())
     //     .then(data => setUpdatedAssignments(data))
     //     // .then(data => setAssignments(data))

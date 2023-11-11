@@ -47,7 +47,7 @@ const router = createBrowserRouter([
       {
         path:'/allAssignments',
         element: <AllAssignments></AllAssignments>,
-        loader: () => fetch('http://localhost:5000/allAssignmentCollection')
+        loader: () => fetch('https://study-buddy-server-ruby.vercel.app/allAssignmentCollection')
       },
       {
         path:'/allAssignments/:id',
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       {
         path:'/update/:id',
         element: <PrivateRoute><UpdateAssignments></UpdateAssignments></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/update/${params.id}`)
+        loader: ({params}) => fetch(`https://study-buddy-server-ruby.vercel.app/update/${params.id}`)
       },
       {
         path:'/allSubmittedAssignments',

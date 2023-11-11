@@ -39,7 +39,7 @@ const LogIn = () => {
                 console.log(result.user)
 
                 const user = { email };
-                axios.post('http://localhost:5000/jwt',user, {withCredentials: true})
+                axios.post('https://study-buddy-server-ruby.vercel.app/jwt',user, {withCredentials: true})
                 .then(res =>{
                     console.log(res.data)
                     if (res.data.success) {
@@ -79,7 +79,7 @@ const LogIn = () => {
                 console.log("loggedUser",loggedUser)
                 if(result.user)
                 {
-                    axios.post('http://localhost:5000/jwt',loggedUser, {withCredentials: true})
+                    axios.post('https://study-buddy-server-ruby.vercel.app/jwt',loggedUser, {withCredentials: true})
                     .then(res =>{
                         console.log(res.data)
                         if (res.data.success) {
@@ -88,13 +88,13 @@ const LogIn = () => {
                     })
                 }
                 else{
-                    axios.post('http://localhost:5000/logout', loggedUser, {useCredentials:true})
+                    axios.post('https://study-buddy-server-ruby.vercel.app/logout', loggedUser, {useCredentials:true})
               .then(res => console.log('after log out', res.data))
                 }
 
 
                 
-                // axios.post('http://localhost:5000/jwt',userEmail, {withCredentials: true})
+                // axios.post('https://study-buddy-server-ruby.vercel.app/jwt',userEmail, {withCredentials: true})
                 // .then(res =>{
                 //     console.log(res.data)
                 //     if (res.data.success) {

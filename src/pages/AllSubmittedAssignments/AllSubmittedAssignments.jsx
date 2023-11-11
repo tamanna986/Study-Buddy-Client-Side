@@ -8,14 +8,14 @@ const AllSubmittedAssignments = () => {
     const [submittedAssignmentsBeforeMarkings, setSubmittedAssignmentsBeforeMarkings] = useState([])
 
     useEffect(() => {
-        // fetch('http://localhost:5000/allSubmittedAssignments')
+        // fetch('https://study-buddy-server-ruby.vercel.app/allSubmittedAssignments')
         //     .then(res => res.json())
         //     .then(data =>{
         //         console.log(data);
         //         setSubmittedAssignmentsBeforeMarkings(data)
         //     } )
 
-            axios.get('http://localhost:5000/allSubmittedAssignments', {withCredentials: true})
+            axios.get('https://study-buddy-server-ruby.vercel.app/allSubmittedAssignments', {withCredentials: true})
             
             .then(res => setSubmittedAssignmentsBeforeMarkings(res.data))
     }, [submittedAssignmentsBeforeMarkings])

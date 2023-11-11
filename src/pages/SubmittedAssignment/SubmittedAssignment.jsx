@@ -32,7 +32,7 @@ const SubmittedAssignment = ({ submittedAssignment}) => {
 // console.log('submit button clicked', newSubmittedMark)
 
 //         // for posting marks and feedback to database
-//     fetch('http://localhost:5000/marks' , {
+//     fetch('https://study-buddy-server-ruby.vercel.app/marks' , {
 //         method: 'POST',
 //         headers:{
 //             'content-type': 'application/json'
@@ -75,7 +75,7 @@ const handleSubmit = (e) => {
     console.log('submit button clicked', newSubmittedMark);
 
     // for posting marks and feedback to database
-    // fetch('http://localhost:5000/marks', {
+    // fetch('https://study-buddy-server-ruby.vercel.app/marks', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const handleSubmit = (e) => {
 
          // send data to the server
 
-         fetch(`http://localhost:5000/updateMark/${id}` , {
+         fetch(`https://study-buddy-server-ruby.vercel.app/updateMark/${id}` , {
             method: 'PUT',
             headers:{
                 'content-type': 'application/json'

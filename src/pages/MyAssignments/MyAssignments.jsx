@@ -11,7 +11,7 @@ const MyAssignments = () => {
     console.log(myAssignments)
     
 
-    // const url = 'http://localhost:5000/allSubmittedAssignments';
+    // const url = 'https://study-buddy-server-ruby.vercel.app/allSubmittedAssignments';
     // useEffect(() => {
 
     //     fetch(url)
@@ -27,10 +27,10 @@ const MyAssignments = () => {
 console.log(user.email)
     
     
-    // const url =  'http://localhost:5000/myAssignments?userEmail=j@gmail.com'
+    // const url =  'https://study-buddy-server-ruby.vercel.app/myAssignments?userEmail=j@gmail.com'
 
     useEffect(() => {
-        const url = ` http://localhost:5000/myAssignments?userEmail=${user?.email}`
+        const url = ` https://study-buddy-server-ruby.vercel.app/myAssignments?userEmail=${user?.email}`
   
         // fetch(url)
         //     .then(res => res.json())

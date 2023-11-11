@@ -25,7 +25,7 @@ const AssignmentDetails = () => {
     console.log(details)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allAssignments/${id}`)
+        fetch(`https://study-buddy-server-ruby.vercel.app/allAssignments/${id}`)
             .then(res => res.json())
             .then(data => setDetails(data))
     }, [])
@@ -44,7 +44,7 @@ const AssignmentDetails = () => {
 
 
         // for posting submitted pdf link and note to database
-    fetch('http://localhost:5000/submittedAssignments' , {
+    fetch('https://study-buddy-server-ruby.vercel.app/submittedAssignments' , {
         method: 'POST',
         headers:{
             'content-type': 'application/json'

@@ -13,7 +13,7 @@ const Assignment = ({ assignment, updatedAssignments, setUpdatedAssignments }) =
   // console.log(email.email)
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allAssignments/${_id}`)
+    fetch(`https://study-buddy-server-ruby.vercel.app/allAssignments/${_id}`)
       .then(res => res.json())
       .then(data => setEmail(data))
   }, [])
@@ -41,7 +41,7 @@ const Assignment = ({ assignment, updatedAssignments, setUpdatedAssignments }) =
           }
 
           else{
-            fetch(`http://localhost:5000/allAssignments/${_id}`, {
+            fetch(`https://study-buddy-server-ruby.vercel.app/allAssignments/${_id}`, {
               method: 'DELETE'
             })
               .then(res => res.json())
