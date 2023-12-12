@@ -35,10 +35,14 @@ console.log(user.email)
         // fetch(url)
         //     .then(res => res.json())
         //     .then(data => setMyAssignments(data))
-  
+  console.log("test console")
         axios.get(url, {withCredentials: true})
-            
-            .then(res => setMyAssignments(res.data))
+           .then(res =>{
+                setMyAssignments(res.data)
+                console.log(res, "response for my assignment")
+            } )
+            .catch(error => console.log(error))
+       
     }, [user]);
 
 
