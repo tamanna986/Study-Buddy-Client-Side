@@ -20,6 +20,7 @@ const MainLayOut = ({children}) => {
         <li><Link to="/createassignments">Create Assignment</Link> </li>
         <li><Link to="/allSubmittedAssignments">Submitted Assignment</Link> </li>
         <li><Link to="/myAssignment">My Assignment</Link> </li>
+        <li><Link to="/addResources">Add Resource & Support</Link> </li>
         <li><button onClick={handleSignOut}>Log out</button></li>
         
     </> 

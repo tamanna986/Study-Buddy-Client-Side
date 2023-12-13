@@ -19,6 +19,7 @@ import UpdateAssignments from './pages/UpdateAssignments/UpdateAssignments.jsx';
 import AllSubmittedAssignments from './pages/AllSubmittedAssignments/AllSubmittedAssignments.jsx';
 import MyAssignments from './pages/MyAssignments/MyAssignments.jsx';
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx';
+import AddResources from './Components/AddResources/AddResources.jsx';
 
 
 
@@ -67,6 +68,12 @@ const router = createBrowserRouter([
       {
         path:'//myAssignment',
         element: <PrivateRoute><MyAssignments></MyAssignments></PrivateRoute>
+        
+        
+      },
+      {
+        path:'/addResources',
+        element: <PrivateRoute><AddResources></AddResources></PrivateRoute>
         
         
       }
